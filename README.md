@@ -12,7 +12,18 @@ Upstream report: [ValveSoftware/Proton#10337](https://github.com/ValveSoftware/P
 
 ## Requirements
 
-- proton-cachyos **11.0-20261015** (`cachyos-11.0-20261015-slr`) installed. On Arch and CachyOS this is the `proton-cachyos-slr` package. The DLLs are built for this exact version. Do not copy them into other Proton builds.
+proton-cachyos **11.0-20261015** must be installed. The DLLs are built for this exact version. Do not copy them into other Proton builds.
+
+- **Arch and CachyOS:** install the `proton-cachyos-slr` package.
+- **Steam Deck and other distributions:** download the release from CachyOS and extract it into Steam's tools folder. On a Steam Deck, run this in Konsole in Desktop Mode:
+
+```sh
+mkdir -p ~/.local/share/Steam/compatibilitytools.d
+cd ~/.local/share/Steam/compatibilitytools.d
+curl -L https://github.com/CachyOS/proton-cachyos/releases/download/cachyos-11.0-20261015-slr/proton-cachyos-11.0-20261015-slr-x86_64.tar.xz | tar -xJ
+```
+
+The copy made by the installer needs about 1.6 GB of free space. After installing, you can delete the extracted `proton-cachyos-11.0-20261015-slr-x86_64` folder.
 
 ## Install
 
