@@ -26,6 +26,7 @@ done
 
 [ -e "$DEST" ] && die "$DEST already exists. Remove it to reinstall."
 
+trap 'rm -rf "$DEST"' EXIT    # no half-installed tool on failure
 echo "Copying $SRC"
 echo "     to $DEST"
 mkdir -p "$DEST_ROOT"
@@ -40,11 +41,13 @@ for arch in x86_64 i386; do
     done
 done
 
-sed -i "0,/^    \"[^\"]*\"$/s//    \"$NAME\"/; s/\"display_name\" \"[^\"]*\"/\"display_name\" \"$NAME (time-zone fix)\"/" \
+# the internal name line can carry a trailing // comment
+sed -i -E "0,/^    \"[^\"]*\"[[:space:]]*(\/\/.*)?$/s//    \"$NAME\"/; s/\"display_name\" \"[^\"]*\"/\"display_name\" \"$NAME (time-zone fix)\"/" \
     "$DEST/compatibilitytool.vdf"
 # a different version string makes Proton relink the game prefix to these DLLs
 echo "$(cut -d' ' -f1 "$SRC/version") $WANT-tzfix" > "$DEST/version"
 
 grep -q "\"$NAME\"" "$DEST/compatibilitytool.vdf" || die "could not rename the tool in compatibilitytool.vdf"
+trap - EXIT
 echo "Done. Restart Steam, then pick \"$NAME (time-zone fix)\" under"
 echo "ArcheAge Chronicles > Properties > Compatibility."
