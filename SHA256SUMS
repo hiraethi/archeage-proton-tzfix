@@ -1,0 +1,4 @@
+d78253e726b0ccc30ceee9e716e3db6e788c295558d01517ec236a8507d4c027  dlls/i386-windows/kernel32.dll
+e0bf12b94748ae28e43e93d25bad2aeb54c40ca752df8fad50aacba3f36c47e0  dlls/i386-windows/kernelbase.dll
+fb6de4f0f9a90d3194b46081400558f65014f1953bbb9b8dc678f0cc3361d0b8  dlls/x86_64-windows/kernel32.dll
+bdede2509a6d1e2bd5684602eacc9f833ece9520c3a9e7f3e5df9f63fed285fa  dlls/x86_64-windows/kernelbase.dll
